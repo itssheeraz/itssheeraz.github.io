@@ -5,6 +5,14 @@
  * Local file access (file://) is restricted for security and asset loading.
  */
 
+(function(){
+    var hostname = window.location.hostname;
+        if(hostname.indexOf("itssheeraz.github.io") === -1 && hostname !== "") {
+        document.documentElement.innerHTML = "<h1>403 Forbidden: Please view on the live server.</h1>";
+        throw new Error("Local access denied");
+    }
+})();
+
 // --- SECURITY LAYER (HIDDEN) ---
 // If the user tries to open this file directly from their desktop (Save As),
 // this code detects it and wipes the screen.
